@@ -1,10 +1,15 @@
 
 import 'package:flutter/material.dart';
 
-class AboutDialogDemo extends StatelessWidget {
+class AboutDialogDemo extends StatefulWidget {
 
+  @override
+  State<StatefulWidget> createState() => AboutDialogState();
 
-  BuildContext context;
+}
+
+class AboutDialogState extends State<AboutDialogDemo> {
+
   _showAboutDIalog() {
     showAboutDialog(
       context: context,
@@ -28,17 +33,21 @@ class AboutDialogDemo extends StatelessWidget {
     );
   }
 
+
   @override
-  Widget build(BuildContext context) {
-    this.context = context;
-   return Scaffold(
-     appBar: AppBar(
-       title: Text("AboutDialogDemo"),
-     ),
-     body: Center(
-       child: FlatButton(onPressed: _showAboutDIalog, child: Text("showAboutDIalog")),
-     ),
-   );
+  void initState() {
+    super.initState();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("AboutDialogDemo"),
+      ),
+      body: Center(
+        child: FlatButton(onPressed: _showAboutDIalog, child: Text("showAboutDIalog")),
+      ),
+    );
+  }
 }
