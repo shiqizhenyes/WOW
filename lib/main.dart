@@ -1,4 +1,6 @@
 import 'package:WOW/AboutDialogDemo.dart';
+import 'package:WOW/ExpandedDemo.dart';
+import 'package:WOW/SafeAreaDemo.dart';
 import 'package:flutter/material.dart';
 
 
@@ -57,11 +59,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _onPressed(int index) {
     switch (index) {
+      case 1:
+        _goToSafeArea();
+        break;
+      case 2:
+        _goToExpanded();
+        break;
       case 3:
         _goToAboutDialog();
         break;
       default:
     }
+  }
+
+  _goToSafeArea() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return SafeAreaDemo();
+    }));
+  }
+
+  _goToExpanded() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return ExpandedDemo();
+    }));
   }
 
   _goToAboutDialog() {
