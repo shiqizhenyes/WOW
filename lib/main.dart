@@ -1,5 +1,6 @@
 import 'package:WOW/AboutDialogDemo.dart';
 import 'package:WOW/ExpandedDemo.dart';
+import 'package:WOW/Introduction.dart';
 import 'package:WOW/SafeAreaDemo.dart';
 import 'package:flutter/material.dart';
 
@@ -59,6 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _onPressed(int index) {
     switch (index) {
+      case 0:
+        _goToIntroduction();
+        break;
       case 1:
         _goToSafeArea();
         break;
@@ -70,6 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       default:
     }
+  }
+
+
+  _goToIntroduction() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return Introduction();
+    }));
   }
 
   _goToSafeArea() {
