@@ -2,6 +2,7 @@ import 'package:WOW/AboutDialogDemo.dart';
 import 'package:WOW/ExpandedDemo.dart';
 import 'package:WOW/Introduction.dart';
 import 'package:WOW/SafeAreaDemo.dart';
+import 'package:WOW/entity/WidgetModel.dart';
 import 'package:flutter/material.dart';
 
 
@@ -58,6 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
     "Google developments"
   ];
 
+  List<WidgetModel> widgetModels = List();
+
   _onPressed(int index) {
     switch (index) {
       case 0:
@@ -101,6 +104,16 @@ class _MyHomePageState extends State<MyHomePage> {
     }));
   }
 
+
+  @override
+  void initState() {
+    super.initState();
+    this.widgetModels.add(WidgetModel(widgetImages[0], titles[0], subtitles[0]));
+    this.widgetModels.add(WidgetModel(widgetImages[1], titles[1], subtitles[0]));
+    this.widgetModels.add(WidgetModel(widgetImages[2], titles[2], subtitles[0]));
+    this.widgetModels.add(WidgetModel(widgetImages[3], titles[3], subtitles[1]));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,17 +137,17 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding: EdgeInsets.only(right: 8.0),
                         child: Text((1 + index).toString(), style: TextStyle(fontSize: 14, color: Colors.grey),),
                       ),
-                      Image.asset(this.widgetImages[index], width: 120, fit: BoxFit.fitWidth,),
+                      Image.asset(this.widgetModels[index].image, width: 120, fit: BoxFit.fitWidth,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.only(left: 16.0),
-                            child: Text(this.titles[index], style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),),
+                            child: Text(this.widgetModels[index].title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),),
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 16.0),
-                            child: Text(this.subtitles[0], style: TextStyle(fontWeight: FontWeight.bold, fontSize: 8),),
+                            child: Text(this.widgetModels[index].subtitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 8),),
                           )
                         ],
                       )
