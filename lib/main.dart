@@ -2,9 +2,9 @@ import 'package:WOW/AboutDialogDemo.dart';
 import 'package:WOW/ExpandedDemo.dart';
 import 'package:WOW/Introduction.dart';
 import 'package:WOW/SafeAreaDemo.dart';
+import 'package:WOW/WrapDemo.dart';
 import 'package:WOW/entity/WidgetModel.dart';
 import 'package:flutter/material.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -41,16 +41,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   
   var widgetImages = <String>[
-    "images/index.webp",
-    "images/widget1.webp",
-    "images/widget2.webp",
-    "images/widget83.webp",
+    "assets/images/index.webp",
+    "assets/images/widget1.webp",
+    "assets/images/widget2.webp",
+    "assets/images/widget3.webp",
+    "assets/images/widget83.webp",
     ];
 
   var titles = <String>[
     "Introducing Widget of the Week!",
     "SafeArea",
     "Expanded",
+    "Wrap",
     "AboutDialog"
   ];
 
@@ -73,6 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
         _goToExpanded();
         break;
       case 3:
+        _goToWrap();
+        break;
+      case 4:
         _goToAboutDialog();
         break;
       default:
@@ -98,6 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }));
   }
 
+  _goToWrap() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return WrapDemo();
+    }));
+  }
+
   _goToAboutDialog() {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return AboutDialogDemo();
@@ -109,9 +120,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     this.widgetModels.add(WidgetModel(widgetImages[0], titles[0], subtitles[0]));
-    this.widgetModels.add(WidgetModel(widgetImages[1], titles[1], subtitles[0]));
-    this.widgetModels.add(WidgetModel(widgetImages[2], titles[2], subtitles[0]));
+    this.widgetModels.add(WidgetModel(widgetImages[1], titles[1], subtitles[1]));
+    this.widgetModels.add(WidgetModel(widgetImages[2], titles[2], subtitles[1]));
     this.widgetModels.add(WidgetModel(widgetImages[3], titles[3], subtitles[1]));
+    this.widgetModels.add(WidgetModel(widgetImages[4], titles[4], subtitles[0]));
+
   }
 
   @override

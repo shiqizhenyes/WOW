@@ -6,6 +6,26 @@
 
 <img src="img/index.png" width = "200" height = "100%" alt="" align=center />
 
+## Wrap
+
+<img src="img/wrap.png" width = "200" height = "100%" alt="" align=center />
+
+‘’‘’dart
+
+Wrap(
+    direction: Axis.horizontal,
+    children: <Widget>[
+        Container(width: 50, height: 50, color: Colors.yellow, margin: EdgeInsets.all(10.0),),
+        Container(width: 50, height: 50, color: Colors.yellow, margin: EdgeInsets.all(10.0),),
+        Container(width: 50, height: 50, color: Colors.yellow, margin: EdgeInsets.all(10.0),),
+        Container(width: 50, height: 50, color: Colors.yellow, margin: EdgeInsets.all(10.0),),
+        Container(width: 50, height: 50, color: Colors.yellow, margin: EdgeInsets.all(10.0),),
+        Container(width: 50, height: 50, color: Colors.yellow, margin: EdgeInsets.all(10.0),)
+    ],
+),
+
+‘’‘’
+
 ## AboutDialog
 
 <img src="img/about_dialog.png" width = "200" height = "100%" alt="" align=center />
