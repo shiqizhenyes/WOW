@@ -133,11 +133,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         child: ListView.builder(
           itemBuilder: (context, int index) {
-            // return FlatButton(
-            //   padding: EdgeInsets.zero,
-            //   onPressed: () => _onPressed(index),
-            //   child: _buildListElement(index),
-            // );
             return GestureDetector(
               child: _buildListElement(index),
               onTap: () => _onPressed(index),
@@ -176,6 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(left: 16.0, bottom: 10.0),
+
                   child: Text(
                     this.widgetModels[index].title,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
