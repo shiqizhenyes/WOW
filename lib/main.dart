@@ -113,12 +113,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    for (int i; i < widgetImages.length; i++) {
-      this.widgetModels.add(WidgetModel(
-            image: widgetImages[i],
-            title: titles[i],
-            subtitle: subtitles[subtitlesIndex[i]],
-          ));
+    for (int i = 0; i < widgetImages.length; i++) {
+      this.widgetModels.add(
+            WidgetModel(
+              image: widgetImages[i],
+              title: titles[i],
+              subtitle: subtitles[subtitlesIndex[i]],
+            ),
+          );
     }
   }
 
@@ -131,10 +133,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         child: ListView.builder(
           itemBuilder: (context, int index) {
-            return FlatButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => _onPressed(index),
+            // return FlatButton(
+            //   padding: EdgeInsets.zero,
+            //   onPressed: () => _onPressed(index),
+            //   child: _buildListElement(index),
+            // );
+            return GestureDetector(
               child: _buildListElement(index),
+              onTap: () => _onPressed(index),
             );
           },
           itemCount: widgetImages.length,
@@ -155,18 +161,21 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
           ),
-          Image.asset(
-            this.widgetModels[index].image,
-            width: 120,
-            fit: BoxFit.fitWidth,
-            // fit: BoxFit.contain,
+          Hero(
+            tag: "hero" + index.toString(),
+            child: Image.asset(
+              this.widgetModels[index].image,
+              width: 120,
+              fit: BoxFit.fitWidth,
+              // fit: BoxFit.contain,
+            ),
           ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: 16.0,bottom: 10.0),
+                  padding: EdgeInsets.only(left: 16.0, bottom: 10.0),
                   child: Text(
                     this.widgetModels[index].title,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
