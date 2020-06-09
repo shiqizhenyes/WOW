@@ -11,7 +11,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -39,14 +37,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
   var widgetImages = <String>[
     "assets/images/index.webp",
     "assets/images/widget1.webp",
     "assets/images/widget2.webp",
     "assets/images/widget3.webp",
     "assets/images/widget83.webp",
-    ];
+  ];
 
   var titles = <String>[
     "Introducing Widget of the Week!",
@@ -56,10 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     "AboutDialog"
   ];
 
-  var subtitles = <String>[
-    "Flutter",
-    "Google developments"
-  ];
+  var subtitles = <String>["Flutter", "Google developments"];
 
   List<WidgetModel> widgetModels = List();
 
@@ -83,7 +77,6 @@ class _MyHomePageState extends State<MyHomePage> {
       default:
     }
   }
-
 
   _goToIntroduction() {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -115,16 +108,34 @@ class _MyHomePageState extends State<MyHomePage> {
     }));
   }
 
-
   @override
   void initState() {
     super.initState();
-    this.widgetModels.add(WidgetModel(widgetImages[0], titles[0], subtitles[0]));
-    this.widgetModels.add(WidgetModel(widgetImages[1], titles[1], subtitles[1]));
-    this.widgetModels.add(WidgetModel(widgetImages[2], titles[2], subtitles[1]));
-    this.widgetModels.add(WidgetModel(widgetImages[3], titles[3], subtitles[1]));
-    this.widgetModels.add(WidgetModel(widgetImages[4], titles[4], subtitles[0]));
-
+    this.widgetModels.add(WidgetModel(
+          image: widgetImages[0],
+          title: titles[0],
+          subtitle: subtitles[0],
+        ));
+    this.widgetModels.add(WidgetModel(
+          image: widgetImages[1],
+          title: titles[1],
+          subtitle: subtitles[1],
+        ));
+    this.widgetModels.add(WidgetModel(
+          image: widgetImages[2],
+          title: titles[2],
+          subtitle: subtitles[1],
+        ));
+    this.widgetModels.add(WidgetModel(
+          image: widgetImages[3],
+          title: titles[3],
+          subtitle: subtitles[1],
+        ));
+    this.widgetModels.add(WidgetModel(
+          image: widgetImages[4],
+          title: titles[4],
+          subtitle: subtitles[0],
+        ));
   }
 
   @override
@@ -133,45 +144,63 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Scrollbar(
-          child: ListView.builder(
-            itemBuilder: (context, int index) {
-              return FlatButton(
-                onPressed: () {
-                  _onPressed(index);
-                },
-                padding: EdgeInsets.all(0.0), 
-                child: Container(
-                  padding: EdgeInsets.only(left: 8.0, top: 10, right: 16.0, bottom: 10),
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(right: 8.0),
-                        child: Text((1 + index).toString(), style: TextStyle(fontSize: 14, color: Colors.grey),),
-                      ),
-                      Image.asset(this.widgetModels[index].image, width: 120, fit: BoxFit.fitWidth,),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.only(left: 16.0),
-                            child: Text(this.widgetModels[index].title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 16.0),
-                            child: Text(this.widgetModels[index].subtitle, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 8),),
-                          )
-                        ],
-                      )
-                    ],
+      body: Container(
+        child: ListView.builder(
+          itemBuilder: (context, int index) {
+            return Ink(
+              child: InkWell(
+                onTap: () => _onPressed(index),
+                child: _buildListElement(index),
+              ),
+            );
+          },
+          itemCount: widgetImages.length,
+        ),
+      ),
+    );
+  }
+
+  Container _buildListElement(int index) {
+    return Container(
+      padding: EdgeInsets.only(left: 8.0, top: 10, right: 16.0, bottom: 10),
+      child: Row(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(right: 8.0),
+            child: Text(
+              (1 + index).toString(),
+              style: TextStyle(fontSize: 14, color: Colors.grey),
+            ),
+          ),
+          Image.asset(
+            // this.widgetModels[index].image,
+            "assets/images/index.webp",
+            width: 120,
+            // fit: BoxFit.fitWidth,
+            fit: BoxFit.contain,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 16.0),
+                  child: Text(
+                    this.widgetModels[index].title,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 16.0),
+                  child: Text(
+                    this.widgetModels[index].subtitle,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 8),
                   ),
                 )
-              );  
-            },
-            itemCount: widgetImages.length,
-          )
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
