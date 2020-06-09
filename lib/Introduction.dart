@@ -28,13 +28,11 @@ class IntroductionState extends State<Introduction> {
             EdgeInsets.only(left: 16.0, top: 20.0, right: 16.0, bottom: 20.0),
         child: ListView(
           children: <Widget>[
-            GestureDetector(
-              child: Hero(
-                tag: "hero0",
-                child: Image.asset(
-                  "assets/images/index.webp",
-                  fit: BoxFit.contain,
-                ),
+            Hero(
+              tag: "hero0",
+              child: Image.asset(
+                "assets/images/index.webp",
+                fit: BoxFit.contain,
               ),
             ),
             Divider(),

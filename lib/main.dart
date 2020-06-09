@@ -133,9 +133,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         child: ListView.builder(
           itemBuilder: (context, int index) {
-            return GestureDetector(
+            return FlatButton(
               child: _buildListElement(index),
-              onTap: () => _onPressed(index),
+              onPressed: () => _onPressed(index),
             );
           },
           itemCount: widgetImages.length,
@@ -161,8 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Image.asset(
               this.widgetModels[index].image,
               width: 120,
-              fit: BoxFit.fitWidth,
-              // fit: BoxFit.contain,
+              fit: BoxFit.contain,
             ),
           ),
           Expanded(
