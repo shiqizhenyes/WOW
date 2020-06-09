@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   var subtitles = <String>["Flutter", "Google developments"];
+  List<int> subtitlesIndex = [0, 1, 1, 1, 0];
 
   List<WidgetModel> widgetModels = List();
 
@@ -111,31 +112,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    this.widgetModels.add(WidgetModel(
-          image: widgetImages[0],
-          title: titles[0],
-          subtitle: subtitles[0],
-        ));
-    this.widgetModels.add(WidgetModel(
-          image: widgetImages[1],
-          title: titles[1],
-          subtitle: subtitles[1],
-        ));
-    this.widgetModels.add(WidgetModel(
-          image: widgetImages[2],
-          title: titles[2],
-          subtitle: subtitles[1],
-        ));
-    this.widgetModels.add(WidgetModel(
-          image: widgetImages[3],
-          title: titles[3],
-          subtitle: subtitles[1],
-        ));
-    this.widgetModels.add(WidgetModel(
-          image: widgetImages[4],
-          title: titles[4],
-          subtitle: subtitles[0],
-        ));
+
+    for (int i; i < widgetImages.length; i++) {
+      this.widgetModels.add(WidgetModel(
+            image: widgetImages[i],
+            title: titles[i],
+            subtitle: subtitles[subtitlesIndex[i]],
+          ));
+    }
   }
 
   @override
@@ -147,11 +131,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         child: ListView.builder(
           itemBuilder: (context, int index) {
-            return Ink(
-              child: InkWell(
-                onTap: () => _onPressed(index),
-                child: _buildListElement(index),
-              ),
+            return FlatButton(
+              padding: EdgeInsets.zero,
+              onPressed: () => _onPressed(index),
+              child: _buildListElement(index),
             );
           },
           itemCount: widgetImages.length,
@@ -173,28 +156,27 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Image.asset(
-            // this.widgetModels[index].image,
-            "assets/images/index.webp",
+            this.widgetModels[index].image,
             width: 120,
-            // fit: BoxFit.fitWidth,
-            fit: BoxFit.contain,
+            fit: BoxFit.fitWidth,
+            // fit: BoxFit.contain,
           ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: 16.0),
+                  padding: EdgeInsets.only(left: 16.0,bottom: 10.0),
                   child: Text(
                     this.widgetModels[index].title,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 16.0),
                   child: Text(
                     this.widgetModels[index].subtitle,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 8),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
                   ),
                 )
               ],
