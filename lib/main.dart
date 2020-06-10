@@ -1,4 +1,5 @@
 import 'package:WOW/AboutDialogDemo.dart';
+import 'package:WOW/AnimatedContainerDemo.dart';
 import 'package:WOW/ExpandedDemo.dart';
 import 'package:WOW/Introduction.dart';
 import 'package:WOW/SafeAreaDemo.dart';
@@ -42,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
     "assets/images/widget1.webp",
     "assets/images/widget2.webp",
     "assets/images/widget3.webp",
+    "assets/images/widget3.webp", // 图片待补充
     "assets/images/widget83.webp",
   ];
 
@@ -50,11 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
     "SafeArea",
     "Expanded",
     "Wrap",
-    "AboutDialog"
+    "AnimatedContainerDemo",
+    "AboutDialog",
   ];
 
   var subtitles = <String>["Flutter", "Google developments"];
-  List<int> subtitlesIndex = [0, 1, 1, 1, 0];
+  List<int> subtitlesIndex = [0, 1, 1, 1, 1, 0];
 
   List<WidgetModel> widgetModels = List();
 
@@ -73,6 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
         _goToWrap();
         break;
       case 4:
+        _gotoAnimatedContainer();
+        break;
+      case 5:
         _goToAboutDialog();
         break;
       default:
@@ -100,6 +106,12 @@ class _MyHomePageState extends State<MyHomePage> {
   _goToWrap() {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return WrapDemo();
+    }));
+  }
+
+  _gotoAnimatedContainer() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return AnimatedContainerDemo();
     }));
   }
 
@@ -170,7 +182,6 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(left: 16.0, bottom: 10.0),
-
                   child: Text(
                     this.widgetModels[index].title,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
