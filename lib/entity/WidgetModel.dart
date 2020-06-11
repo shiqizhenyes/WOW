@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 
 class WidgetModel {
+  WidgetModel({
+    @required this.image,
+    @required this.title,
+    @required this.subtitle,
+  });
 
-  WidgetModel(this.image, this.title, this.subtitle);
-
-  var title;
-  var subtitle;
-  var image;
-
+  final String title;
+  final String subtitle;
+  final String image;
 }
