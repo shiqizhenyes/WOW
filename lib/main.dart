@@ -38,24 +38,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var widgetImages = <String>[
-    "assets/images/index.webp",
-    "assets/images/widget1.webp",
-    "assets/images/widget2.webp",
-    "assets/images/widget3.webp",
-    "assets/images/widget3.webp", // 图片待补充
-    "assets/images/widget83.webp",
-  ];
-
-  var titles = <String>[
-    "Introducing Widget of the Week!",
-    "SafeArea",
-    "Expanded",
-    "Wrap",
-    "AnimatedContainerDemo",
-    "AboutDialog",
-  ];
-
   var subtitles = <String>["Flutter", "Google developments"];
   List<int> subtitlesIndex = [0, 1, 1, 1, 1, 0];
 
@@ -125,11 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    for (int i = 0; i < widgetImages.length; i++) {
-      this.widgetModels.add(
+    int length = WidgetNames.values.length;
+    for (int i = 0; i < length; i++) {
+      widgetModels.add(
             WidgetModel(
-              image: widgetImages[i],
-              title: titles[i],
+              widgetNames: WidgetNames.values[i],
               subtitle: subtitles[subtitlesIndex[i]],
             ),
           );
@@ -150,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () => _onPressed(index),
             );
           },
-          itemCount: widgetImages.length,
+          itemCount: WidgetNames.values.length,
         ),
       ),
     );

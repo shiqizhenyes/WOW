@@ -31,7 +31,7 @@ class IntroductionState extends State<Introduction> {
             Hero(
               tag: "hero0",
               child: Image.asset(
-                "assets/images/index.webp",
+                "assets/images/000Introducing.webp",
                 fit: BoxFit.contain,
               ),
             ),
