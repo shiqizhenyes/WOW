@@ -13,7 +13,9 @@ class OpacityState extends State<OpacityDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        title: Text("OpacityDemo"),
+      ),
     );
   }
   

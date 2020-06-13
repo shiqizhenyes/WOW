@@ -7,15 +7,28 @@ import 'package:WOW/WrapDemo.dart';
 import 'package:WOW/entity/WidgetModel.dart';
 import 'package:flutter/material.dart';
 
+import 'Routes.dart';
+
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
+    Map<String, WidgetBuilder> routeMap = {
+      Routes.INTRODUCTION.toString():(context) => Introduction(),
+
+      Routes.HOME.toString():(context) => MyHomePage(title: "Flutter WOW")
+    };
+        
+
     return MaterialApp(
       title: 'Flutter WOW',
+      initialRoute: Routes.HOME.toString(),
+      routes: routeMap,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColorLight: Colors.white,
@@ -23,7 +36,6 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter WOW'),
     );
   }
 }
