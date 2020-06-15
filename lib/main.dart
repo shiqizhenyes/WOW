@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
 
       Routes.HOME.toString():(context) => MyHomePage(title: "Flutter WOW")
     };
-        
 
     return MaterialApp(
       title: 'Flutter WOW',
